@@ -14,6 +14,7 @@ spring:
     url: jdbc:mysql://localhost:3306/cloud2020?characterEncoding=utf8&useUnicode=true
     username: root
     password: root
+
     #热部署
   devtools:
     restart:
@@ -25,5 +26,7 @@ mybatis:
 
 eureka:
   client:
-    register-with-eureka: false
-    fetch-registry: false
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:7001/eureka
