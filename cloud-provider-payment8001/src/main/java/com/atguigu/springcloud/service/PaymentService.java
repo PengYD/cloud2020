@@ -6,6 +6,7 @@ import com.atguigu.springcloud.service.imp.PaymentServiceImp;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author : PengYanDong
@@ -28,5 +29,10 @@ public class PaymentService implements PaymentServiceImp {
     @Override
     public Payment getPaymentById(String id) {
         return paymentDao.getPaymentById(id);
+    }
+
+    @Override
+    public List<Payment> getAllPayment() {
+        return paymentDao.getAllPayment();
     }
 }

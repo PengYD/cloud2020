@@ -1,0 +1,11 @@
+server:
+  port: 80
+  servlet:
+    #指定项目路径
+    context-path: /consumer
+
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false

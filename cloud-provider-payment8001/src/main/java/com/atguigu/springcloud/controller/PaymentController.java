@@ -3,13 +3,18 @@ package com.atguigu.springcloud.controller;
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.imp.PaymentServiceImp;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import java.util.List;
 
+/**
+ * @author : PengYanDong
+ * @description : ${description}
+ * @create : 2020-07-16 10:31
+ * <p>
+ * Copyright 2020 All rights reserved.
+ **/
 @RestController
 public class PaymentController {
     @Resource
@@ -25,12 +30,21 @@ public class PaymentController {
         }
     }
 
-    @GetMapping(value = "/get")
-    public CommonResult<Payment> getPaymentById(@RequestBody String id){
-        Payment paymentById = paymentServiceImp.getPaymentById(id);
+    @GetMapping(value = "/get/{id}")
+    public CommonResult<Payment> getPaymentById(@PathVariable String id){
+        Payment payment = paymentServiceImp.getPaymentById(id);
+        if (payment != null){
+            return new CommonResult<>(200, "成功", payment);
+        }else {
+            return new CommonResult<>(500, "失败", null);
+        }
+    }
 
-        if (paymentById != null){
-            return new CommonResult<>(200, "成功", paymentById);
+    @GetMapping(value = "/getAllData")
+    public CommonResult<List> getAllPayment(){
+        List<Payment> paymentList = paymentServiceImp.getAllPayment();
+        if (paymentList != null){
+            return new CommonResult<>(200, "成功", paymentList);
         }else {
             return new CommonResult<>(500, "失败", null);
         }

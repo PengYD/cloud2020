@@ -2,20 +2,28 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.atguigu.springcloud.dao.PaymentDao">
     <resultMap id="BaseResultMap"
-               type="com.atguigu.springcloud.entities.Payment">
+               type="com.atguigu.springcloud.Payment">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="serial" jdbcType="VARCHAR" property="serial" />
     </resultMap>
 
-    <insert id="create" parameterType="com.atguigu.springcloud.entities.Payment">
+    <sql id="Based_List">
+          id,serial
+    </sql>
+
+    <insert id="create" parameterType="com.atguigu.springcloud.Payment">
         insert into payment
-		id,serial
+        (<include refid="Based_List"/>)
 		values (#{id},#{serial})
     </insert>
     <select id="getPaymentById" parameterType="string" resultMap="BaseResultMap">
         select
-        id,serial
+        <include refid="Based_List"/>
         from payment
         where id =#{id}
+    </select>
+    <select id="getAllPayment" resultMap="BaseResultMap">
+        select
+        <include refid="Based_List"/> from payment
     </select>
 </mapper>

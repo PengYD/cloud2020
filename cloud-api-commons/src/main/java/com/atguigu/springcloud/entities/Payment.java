@@ -1,7 +1,13 @@
 package com.atguigu.springcloud.entities;
 
+/**
+ * @author : PengYanDong
+ * @description : ${description}
+ * @create : 2020-07-16 10:28
+ * <p>
+ * Copyright 2020 All rights reserved.
+ **/
 public class Payment {
-
     private Long id;
     private String serial;
 
