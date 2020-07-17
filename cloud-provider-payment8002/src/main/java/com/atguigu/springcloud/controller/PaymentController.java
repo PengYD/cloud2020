@@ -3,17 +3,11 @@ package com.atguigu.springcloud.controller;
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.imp.PaymentServiceImp;
-import lombok.extern.slf4j.Slf4j;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.concurrent.ThreadPoolExecutor;
 
 /**
  * @author : PengYanDong
@@ -23,16 +17,10 @@ import java.util.concurrent.ThreadPoolExecutor;
  * Copyright 2020 All rights reserved.
  **/
 @RestController
-
 public class PaymentController {
 
     @Resource
     private PaymentServiceImp paymentServiceImp;
-
-    @Resource
-    private DiscoveryClient discoveryClient;
-
-    private static final Logger logger = LoggerFactory.getLogger(Slf4j.class.getName());
 
     @Value("${server.port}")
     private String servicePort;
@@ -65,19 +53,5 @@ public class PaymentController {
         }else {
             return new CommonResult<>(500, servicePort+"失败", null);
         }
-    }
-
-    @GetMapping(value = "/discovery")
-    public Object discovery(){
-        List<String> services = discoveryClient.getServices();
-        for (String element : services){
-            logger.info("*********_____"+element);
-        }
-
-        List<ServiceInstance> instances = discoveryClient.getInstances("CLOUD-PAYMENT-SERVICE");
-        for (ServiceInstance service : instances){
-            logger.info("*********_____"+service);
-        }
-        return instances;
     }
 }
