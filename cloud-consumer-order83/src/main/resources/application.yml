@@ -1,0 +1,16 @@
+server:
+  port: 83
+  servlet:
+    #指定项目路径
+    context-path: /consumer
+
+spring:
+  application:
+    name: nacos-order-consumer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+service-url:
+  nacos-user-service: http://nacos-payment-provider
