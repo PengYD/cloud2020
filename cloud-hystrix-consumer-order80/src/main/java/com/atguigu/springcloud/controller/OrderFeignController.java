@@ -36,7 +36,7 @@ public class OrderFeignController {
     }
 
     @GetMapping(value = "/payment/getAllData")
-    public CommonResult<List> getAllPayment(){
+    public String getAllPayment(){
         return paymentFeignService.getAllPayment();
     }
 }
