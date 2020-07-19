@@ -26,7 +26,7 @@ public class OrderController {
     private RestTemplate restTemplate;
 
     @PostMapping("/payment/create")
-    public CommonResult<Payment> create(@RequestBody Payment payment){
+    public CommonResult<Integer> create(@RequestBody Payment payment){
         return restTemplate.postForObject(PAYMENT_URL+"/payment/create", payment, CommonResult.class);
     }
 

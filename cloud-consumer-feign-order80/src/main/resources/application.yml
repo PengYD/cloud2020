@@ -9,6 +9,14 @@ spring:
     name: cloud-consumer-order
 
 
+#feign超时等待
+  #建立连接等待时间
+  #返回等待时间(默认1秒钟)
+ribbon:
+  ReadTimeout:  5000
+  ConnectTimeout: 5000
+
+
 eureka:
   client:
     register-with-eureka: true
@@ -16,5 +24,5 @@ eureka:
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
   instance:
-    instance-id: payment8002
+    instance-id: consumer-feign
     prefer-ip-address: true
