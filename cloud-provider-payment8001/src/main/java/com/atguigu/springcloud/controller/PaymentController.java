@@ -60,12 +60,12 @@ public class PaymentController {
     @GetMapping(value = "/getAllData")
     public CommonResult<List> getAllPayment(){
 
-        //暂停3秒
-        try{
-            TimeUnit.SECONDS.sleep(3);
-        }catch (InterruptedException e){
-            e.printStackTrace();
-        }
+//        //暂停3秒
+//        try{
+//            TimeUnit.SECONDS.sleep(3);
+//        }catch (InterruptedException e){
+//            e.printStackTrace();
+//        }
         List<Payment> paymentList = paymentServiceImp.getAllPayment();
         if (paymentList != null){
             return new CommonResult<>(200, servicePort+"成功", paymentList);
