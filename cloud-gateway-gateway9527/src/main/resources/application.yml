@@ -1,0 +1,19 @@
+server:
+  port: 9527
+
+spring:
+  application:
+    name: cloud-gateway
+
+eureka:
+  instance:
+    hostname: cloud-gateway-service
+    prefer-ip-address: true
+  client:
+    #网关需要注册到微服务
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+
+
