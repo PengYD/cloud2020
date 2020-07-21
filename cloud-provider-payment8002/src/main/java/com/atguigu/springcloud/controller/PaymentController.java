@@ -45,6 +45,16 @@ public class PaymentController {
         }
     }
 
+    @GetMapping(value = "/lb/{id}")
+    public CommonResult<Payment> getLb(@PathVariable String id){
+        Payment payment = paymentServiceImp.getPaymentById(id);
+        if (payment != null){
+            return new CommonResult<>(200, servicePort+"getLb成功", payment);
+        }else {
+            return new CommonResult<>(500, servicePort+"getLb失败", null);
+        }
+    }
+
     @GetMapping(value = "/getAllData")
     public CommonResult<List> getAllPayment(){
         List<Payment> paymentList = paymentServiceImp.getAllPayment();
