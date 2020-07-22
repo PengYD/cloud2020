@@ -18,3 +18,10 @@ eureka:
   instance:
     instance-id: cloud-config-center
     prefer-ip-address: true
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
