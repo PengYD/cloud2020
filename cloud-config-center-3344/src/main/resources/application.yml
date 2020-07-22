@@ -1,6 +1,7 @@
 server:
   port: 3344
 
+#配置中心
 spring:
   application:
     name: cloud-config-center
@@ -12,8 +13,13 @@ spring:
           search-paths:
             - cloudConfig
       label: master
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
 
-
+#服务注册
 eureka:
   client:
     register-with-eureka: true
@@ -23,3 +29,10 @@ eureka:
   instance:
     instance-id: cloud-config-center
     prefer-ip-address: true
+
+#rabbitmq相关配置，暴露bus刷新配置的端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'
