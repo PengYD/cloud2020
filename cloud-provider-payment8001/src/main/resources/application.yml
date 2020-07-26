@@ -6,21 +6,27 @@ server:
 
 spring:
   application:
-    name: cloud-payment-service
+    name: cloud-payment-service #微服务名称
 
-  datasource:
+  zipkin: #微服务调用链路
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1
+
+  datasource: #数据库连接信息
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/cloud2020?characterEncoding=utf8&useUnicode=true
     username: root
     password: root
 
-mybatis:
+mybatis: #mybatis扫描
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.atguigu.springclous.entities
 
 eureka:
-  client:
+  client: #注册微服务
     register-with-eureka: true
     fetch-registry: true
     service-url:
