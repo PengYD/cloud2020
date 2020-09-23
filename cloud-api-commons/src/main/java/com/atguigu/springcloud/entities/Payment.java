@@ -8,9 +8,14 @@ package com.atguigu.springcloud.entities;
  * Copyright 2020 All rights reserved.
  **/
 public class Payment {
+
     private Long id;
     private String serial;
 
+    public Payment(Long id, String serial) {
+        this.id = id;
+        this.serial = serial;
+    }
 
     public Long getId() {
         return id;
