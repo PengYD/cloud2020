@@ -7,14 +7,14 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 /**
  * @author : PengYanDong
  * @description : ${description}
- * @create : 2020-07-16 10:27
+ * @create : 2020-09-24 11:23
  * <p>
  * Copyright 2020 All rights reserved.
  **/
-@EnableDiscoveryClient
 @SpringBootApplication
-public class OrderMain83 {
+@EnableDiscoveryClient
+public class PaymentMain9004 {
     public static void main(String[] args) {
-        SpringApplication.run(OrderMain83.class,args);
+        SpringApplication.run(PaymentMain9004.class, args);
     }
 }
