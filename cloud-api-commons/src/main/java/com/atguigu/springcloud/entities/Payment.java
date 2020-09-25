@@ -17,6 +17,9 @@ public class Payment {
         this.serial = serial;
     }
 
+    public Payment() {
+    }
+
     public Long getId() {
         return id;
     }

@@ -2,11 +2,14 @@ package com.atguigu.springcloud.controller;
 
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
+import com.atguigu.springcloud.service.PaymentService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 
 /**
@@ -19,8 +22,17 @@ import java.util.HashMap;
 @RestController
 public class PaymentController {
 
+    @Resource
+    private PaymentService paymentService;
+
     @Value("${server.port}")
     private String serverPort;
+
+    @Value("${service-url.nacos-user-service}")
+    private String URL;
+
+    @Resource
+    private RestTemplate restTemplate;
 
     public static HashMap<Long, Payment> hashMap = new HashMap<>();
     static{
@@ -29,11 +41,16 @@ public class PaymentController {
         hashMap.put(3L,new Payment(3L,"6ua8c1e3bc2742d8848569891xt92183"));
     }
 
-    @GetMapping(value = "/paymentSQL/{id}")
-    public CommonResult<Payment> paymentSQL(@PathVariable("id") Long id){
-        Payment payment = hashMap.get(id);
-        CommonResult<Payment> result = new CommonResult(200,"from mysql,serverPort:  "+serverPort,payment);
-        return result;
+
+    @GetMapping(value = "/Test/{id}")
+    public CommonResult<Payment> feignTest(@PathVariable("id") Long id){
+        CommonResult<Payment>  forObject = restTemplate.getForObject(URL + "/paymentSQL/" + id, CommonResult.class);
+        return forObject;
+    }
+
+    @GetMapping(value = "/consumer/paymentSQL/{id}")
+    public CommonResult<Payment> paymentSQL(@PathVariable("id") Long id) {
+        return paymentService.paymentSQL(id);
     }
 
 }
