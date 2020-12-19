@@ -12,8 +12,8 @@ import com.atguigu.springcloud.entities.CommonResult;
  **/
 public class CustomerBlockHandler {
 
-    public static CommonResult ResourceHandler1(BlockException e){
-        return new CommonResult(500,e.getClass().getCanonicalName()+"\t 服务不可用1");
+    public static CommonResult ResourceHandler1(String p1,String p2,BlockException e){
+        return new CommonResult(500,e.getClass().getCanonicalName()+"\\t 服务不可用1");
     }
 
     public static CommonResult ResourceHandler2(BlockException e){
