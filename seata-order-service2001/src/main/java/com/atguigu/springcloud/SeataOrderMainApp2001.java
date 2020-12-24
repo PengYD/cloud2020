@@ -12,6 +12,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @SpringBootApplication(exclude = DataSourceAutoConfiguration.class)//取消数据源自动创建的配置
 public class SeataOrderMainApp2001
 {
+
     public static void main(String[] args) {
         SpringApplication.run(SeataOrderMainApp2001.class, args);
     }
