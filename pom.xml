@@ -34,7 +34,9 @@
         <module>cloudalibaba-consumer-nacos-order84</module>
         <module>cloudalibaba-provider-payment9003</module>
         <module>cloudalibaba-provider-payment9004</module>
-        <module>seata-order-service2002</module>
+        <module>seata-order-service2001</module>
+        <module>seata-account-service2002</module>
+        <module>seata-storage-service2003</module>
     </modules>
 
     <packaging>pom</packaging>
@@ -50,6 +52,7 @@
         <log4j.version>1.2.17</log4j.version>
         <mysql.version>5.1.6</mysql.version>
         <druid.version>1.1.16</druid.version>
+        <maven.version>3.0.0</maven.version>
         <mybatis.spring.boot.version>2.1.1</mybatis.spring.boot.version>
     </properties>
 
@@ -59,7 +62,7 @@
             <dependency>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-project-info-reports-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>${maven.version}</version>
             </dependency>
             <!--spring boot 2.2.2-->
             <dependency>

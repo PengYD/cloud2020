@@ -27,4 +27,10 @@ public class OrderController{
         orderService.create(order);
         return new CommonResult(200,"订单创建成功");
     }
+
+    @GetMapping("/test1")
+    public CommonResult test1(){
+
+        return new CommonResult(200,"服务启动成功");
+    }
 }
