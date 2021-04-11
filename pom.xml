@@ -38,6 +38,7 @@
         <module>seata-account-service2002</module>
         <module>seata-storage-service2003</module>
         <module>xxl-job-test1</module>
+        <module>z-netty</module>
     </modules>
 
     <packaging>pom</packaging>

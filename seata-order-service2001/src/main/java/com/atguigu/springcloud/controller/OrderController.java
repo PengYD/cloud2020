@@ -3,6 +3,7 @@ package com.atguigu.springcloud.controller;
 import com.atguigu.springcloud.domain.CommonResult;
 import com.atguigu.springcloud.domain.Order;
 import com.atguigu.springcloud.service.OrderService;
+import io.seata.spring.annotation.GlobalTransactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,6 +23,7 @@ public class OrderController{
 
 
     @GetMapping("/order/create")
+    @GlobalTransactional(name = "seata-test", rollbackFor = Exception.class)
     public CommonResult create(Order order)
     {
         orderService.create(order);
