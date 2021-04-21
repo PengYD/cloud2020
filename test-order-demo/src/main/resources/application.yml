@@ -1,0 +1,16 @@
+server:
+  port: 7776
+  servlet:
+    #指定项目路径
+    context-path: /consumer
+
+spring:
+  application:
+    name: test-order-demo
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+
+service-url:
+  nacos-user-service: http://test-service

@@ -39,6 +39,9 @@
         <module>seata-storage-service2003</module>
         <module>xxl-job-test1</module>
         <module>z-netty</module>
+        <module>test-demo1</module>
+        <module>test-demo2</module>
+        <module>test-order-demo</module>
     </modules>
 
     <packaging>pom</packaging>
