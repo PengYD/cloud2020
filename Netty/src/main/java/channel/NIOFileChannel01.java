@@ -26,6 +26,7 @@ public class NIOFileChannel01 {
 
         byteBuffers.put(str.getBytes());
 
+        // 反转
         byteBuffers.flip();
 
         // 将buffer写入通道

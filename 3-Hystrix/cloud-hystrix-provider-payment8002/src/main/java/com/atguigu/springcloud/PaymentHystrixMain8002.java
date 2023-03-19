@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Bean;
 @EnableCircuitBreaker
 public class PaymentHystrixMain8002 {
     public static void main(String[] args) {
-        SpringApplication.run(PaymentHystrixMain8001.class,args);
+        SpringApplication.run(PaymentHystrixMain8002.class,args);
     }
 
     @Bean
