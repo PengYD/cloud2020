@@ -26,6 +26,7 @@ public class NIOFileChannel04 {
         FileChannel channel2 = fileOutputStream.getChannel();
 
         channel2.transferFrom(channel1,0,channel1.size());
+//        channel2.transferTo(0, 100, channel1);
 
         fileInputStream.close();
         fileOutputStream.close();

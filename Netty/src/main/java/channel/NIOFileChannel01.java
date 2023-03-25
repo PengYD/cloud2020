@@ -16,7 +16,7 @@ public class NIOFileChannel01 {
     public static void main(String[] args) throws Exception{
         String str = "hello,彭堰东";
 
-        FileOutputStream fileOutputStream = new FileOutputStream("d:\\file01.text");
+        FileOutputStream fileOutputStream = new FileOutputStream("/Users/pengyd/java/file02.text");
 
         // 通道
         FileChannel channel = fileOutputStream.getChannel();
