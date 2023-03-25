@@ -97,11 +97,6 @@ public class GroupChatService {
                 e2.printStackTrace();
             }
         }
-
-        //获取到该channel关联的buffer
-        ByteBuffer buffer = (ByteBuffer)key.attachment();
-        channel.read(buffer);
-        System.out.println("form 客户端 " + new String(buffer.array()));
     }
 
     private void sendInfoToClients(String msg, SocketChannel channel) throws IOException {

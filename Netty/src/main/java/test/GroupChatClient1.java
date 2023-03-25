@@ -12,7 +12,7 @@ import java.util.Scanner;
 /**
  * @author pengyd
  */
-public class GroupChatClient {
+public class GroupChatClient1 {
 
     private final String HOST = "127.0.0.1";
 
@@ -24,7 +24,7 @@ public class GroupChatClient {
 
     private String userName;
 
-    public GroupChatClient() throws IOException {
+    public GroupChatClient1() throws IOException {
 
         selector = Selector.open();
 
@@ -74,7 +74,7 @@ public class GroupChatClient {
     }
 
     public static void main(String[] args) throws IOException {
-        GroupChatClient chatClient = new GroupChatClient();
+        GroupChatClient1 chatClient = new GroupChatClient1();
 
         new Thread() {
             public void run() {
