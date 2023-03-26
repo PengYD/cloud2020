@@ -2,6 +2,7 @@ package netty;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelOption;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -16,7 +17,8 @@ public class NettyService {
         // 创建两个线程组创建 BossGroup 和 workerGroup
         // BossGroup只处理请求 workerGroup处理业务
         // 都是无限循环
-        NioEventLoopGroup bossGroup = new NioEventLoopGroup();
+        // 线程组 含有的子线程（NioEventLoop）的个数，默认为cpu的核数*2
+        NioEventLoopGroup bossGroup = new NioEventLoopGroup(1);
         NioEventLoopGroup workerGroup = new NioEventLoopGroup();
 
         try {
@@ -45,6 +47,16 @@ public class NettyService {
 
             // 绑定一个端口并同步， 生成一个channelFuture 对象
             ChannelFuture cf = bootstrap.bind(6668).sync();
+            cf.addListener(new ChannelFutureListener() {
+                @Override
+                public void operationComplete(ChannelFuture future) throws Exception {
+                    if (cf.isSuccess()) {
+                        System.out.println("监听端口6668成功");
+                    } else {
+                        System.out.println("监听端口6668失败");
+                    }
+                }
+            });
             // 对关闭通道进行监听
             cf.channel().closeFuture().sync();
 
