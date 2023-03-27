@@ -1,0 +1,15 @@
+syntax = "proto3"; // 版本
+option java_outer_classname = "StudentPOJO"; //生成的类名 文件名
+
+//命令 protoc --java_out=. Student.proto
+// 生成 会在StudentPOJO
+message Student {
+  // 会在StudentPOJO 外部生成内部类 Student 他才是真正发送的pojo
+
+  // Student 类中有一个属性 名字id 类型int32（protobuf类型， 对应java int）1代表序号，不是值
+  int32 id = 1;
+
+  string name = 2;
+
+}
+

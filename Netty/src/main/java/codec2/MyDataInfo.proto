@@ -1,0 +1,44 @@
+syntax = "proto3"; // 版本
+option optimize_for = SPEED; //加快解析
+option java_package = "codec2";
+option java_outer_classname = "MyDataInfo"; //生成的外部类名 文件名
+
+//命令 protoc --java_out=. MyDataInfo.proto
+
+// 管理其他的 message 管理其他的 message
+message MyMessage{
+  enum DataType {
+    studentType = 0;  // 要求从零开始
+    WorkerType = 1;
+  }
+
+  // 用dataType标识传入的是哪一个枚举类型
+  DataType data_type = 1;
+
+  // 表示每次枚举类型最多只能出现 这两个其中一个
+  oneof dataBody {
+    Student student = 2;
+    Worker worker = 3;
+  }
+}
+
+
+// 生成 会在StudentPOJO
+message Student {
+  // 会在StudentPOJO 外部生成内部类 Student 他才是真正发送的pojo
+
+  // Student 类中有一个属性 名字id 类型int32（protobuf类型， 对应java int）1代表序号，不是值
+  int32 id = 1;
+
+  string name = 2;
+}
+
+message Worker {
+  // 会在StudentPOJO 外部生成内部类 Student 他才是真正发送的pojo
+
+  // Student 类中有一个属性 名字id 类型int32（protobuf类型， 对应java int）1代表序号，不是值
+  int32 age = 1;
+
+  string name = 2;
+}
+
