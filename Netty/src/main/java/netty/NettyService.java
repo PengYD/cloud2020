@@ -35,6 +35,7 @@ public class NettyService {
                     .channel(NioServerSocketChannel.class)
                     .option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, Boolean.TRUE)
+//                    .handler(null) 对应bossGroup childHandler对应workerGroup
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel ch) throws Exception {
