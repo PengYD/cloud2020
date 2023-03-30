@@ -1,0 +1,17 @@
+server:
+  port: 8082
+
+dubbo:
+  application:
+    name: boot-user-service-provider
+  registry:
+    address: 127.0.0.1:2181
+    protocol: zookeeper
+  protocol:
+    name: dubbo
+    port: 20880
+  monitor:
+    protocol: registry
+#    指定被调用服务超时时间，优先级低于consumer
+  provider:
+    timeout:

@@ -20,10 +20,8 @@
         <module>Sentinel</module>
         <module>xxl-job-test1</module>
         <module>Netty</module>
-        <module>test-demo1</module>
-        <module>test-demo2</module>
-        <module>test-order-demo</module>
         <module>dubbo-zk</module>
+        <module>z-test</module>
     </modules>
 
     <packaging>pom</packaging>
