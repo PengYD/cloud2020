@@ -23,6 +23,7 @@
         <module>test-demo1</module>
         <module>test-demo2</module>
         <module>test-order-demo</module>
+        <module>dubbo-zk</module>
     </modules>
 
     <packaging>pom</packaging>
