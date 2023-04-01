@@ -1,12 +1,10 @@
 package com.atguigu.springcloud.controller;
 
-import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.service.PaymentFeignServiceImp;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 /**
  * @author : PengYanDong
@@ -31,6 +29,9 @@ public class OrderFeignController {
     }
 
     @GetMapping(value = "/payment")
+//    @HystrixCommand(fallbackMethod = "paymentInfo_TimeOutHandler",commandProperties = {
+//            @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds",value = "3000")
+//    })
     public String paymentInfo_TimeOut(){
         return paymentFeignService.paymentInfo_TimeOut();
     }
@@ -38,5 +39,15 @@ public class OrderFeignController {
     @GetMapping(value = "/payment/getAllData")
     public String getAllPayment(){
         return paymentFeignService.getAllPayment();
+    }
+
+    @GetMapping(value = "/paymentError")
+    public String paymentInfo_Error(){
+        return paymentFeignService.paymentInfo_Error();
+    }
+
+    @GetMapping(value = "/payment/paymentBreaker/{id}")
+    public String paymentCircuitBreaker(@PathVariable("id") Integer id){
+        return paymentFeignService.paymentCircuitBreaker(id);
     }
 }

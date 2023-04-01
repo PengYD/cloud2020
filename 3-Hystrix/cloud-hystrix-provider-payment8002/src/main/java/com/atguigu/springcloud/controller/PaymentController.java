@@ -39,4 +39,14 @@ public class PaymentController {
         logger.info("********************进入paymentInfo_TimeOut方法，端口"+servicePort);
         return paymentServiceImp.paymentInfo_TimeOut();
     }
+
+    @GetMapping(value = "/paymentError")
+    public String paymentInfo_Error(){
+        logger.info("********************进入paymentInfo_TimeOut方法，端口"+servicePort);
+        return paymentServiceImp.paymentInfo_Error();
+    }
+    @GetMapping(value = "/payment/paymentBreaker/{id}")
+    public String paymentCircuitBreaker(@PathVariable("id") Integer id){
+        return paymentServiceImp.paymentCircuitBreaker(id);
+    }
 }

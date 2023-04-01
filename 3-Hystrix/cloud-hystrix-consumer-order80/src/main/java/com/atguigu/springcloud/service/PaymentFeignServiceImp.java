@@ -3,6 +3,7 @@ package com.atguigu.springcloud.service;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 /**
  * @author : PengYanDong
@@ -23,4 +24,10 @@ public interface PaymentFeignServiceImp {
 
     @GetMapping(value = "/payment/payment")
     String paymentInfo_TimeOut();
+
+    @GetMapping(value = "/payment/paymentError")
+    String paymentInfo_Error();
+
+    @GetMapping(value = "/payment/paymentBreaker")
+    String paymentCircuitBreaker(@PathVariable("id") Integer id);
 }
