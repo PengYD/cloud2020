@@ -5,20 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>2-Nacos</artifactId>
+        <artifactId>cloud2020</artifactId>
         <groupId>com.pengyd.springcloud</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>nacos-config</artifactId>
+    <artifactId>4-Nacos</artifactId>
 
     <packaging>pom</packaging>
 
     <modules>
-        <module>cloud-config-center-3344</module>
-        <module>cloud-config-client-3355</module>
-        <module>cloud-config-client-3366</module>
-        <module>cloudalibaba-config-nacos-client3377</module>
+        <module>cloud-consumer-order83</module>
+        <module>cloudalibaba-provider-payment9001</module>
+        <module>cloudalibaba-provider-payment9002</module>
+        <module>nacos-config</module>
     </modules>
 
 </project>

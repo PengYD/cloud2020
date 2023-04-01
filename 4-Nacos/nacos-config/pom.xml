@@ -5,20 +5,20 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>cloud2020</artifactId>
+        <artifactId>4-Nacos</artifactId>
         <groupId>com.pengyd.springcloud</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>3-Hystrix</artifactId>
+    <artifactId>nacos-config</artifactId>
 
     <packaging>pom</packaging>
 
     <modules>
-        <module>cloud-consumer-hystrix-dashboard9001</module>
-        <module>cloud-hystrix-consumer-order80</module>
-        <module>cloud-hystrix-provider-payment8001</module>
-        <module>cloud-hystrix-provider-payment8002</module>
+        <module>cloud-config-center-3344</module>
+        <module>cloud-config-client-3355</module>
+        <module>cloud-config-client-3366</module>
+        <module>cloudalibaba-config-nacos-client3377</module>
     </modules>
 
 </project>
