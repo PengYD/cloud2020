@@ -10,7 +10,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>5-MQ</artifactId>
+    <artifactId>5-MQ-Stream</artifactId>
 
     <packaging>pom</packaging>
 
