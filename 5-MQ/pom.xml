@@ -10,7 +10,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>MQ</artifactId>
+    <artifactId>5-MQ</artifactId>
 
     <packaging>pom</packaging>
 

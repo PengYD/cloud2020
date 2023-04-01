@@ -15,8 +15,8 @@
         <module>2-Hystrix</module>
         <module>3-Gateway</module>
         <module>4-Config</module>
+        <module>5-MQ</module>
         <module>4-Nacos</module>
-        <module>MQ</module>
         <module>Seata</module>
         <module>Sentinel</module>
         <module>xxl-job-test1</module>
