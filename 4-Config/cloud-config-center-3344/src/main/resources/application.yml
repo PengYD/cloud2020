@@ -1,6 +1,14 @@
 server:
   port: 3344
 
+# http://localhost:3344/config-dev.yml
+
+# 刷新配置 POST请求
+# http://localhost:3344/actuator/bus-refresh
+
+# 刷新具体某个节点
+# http://localhost:3344/actuator/bus-refresh/config-client:3355
+
 #配置中心
 spring:
   application:
