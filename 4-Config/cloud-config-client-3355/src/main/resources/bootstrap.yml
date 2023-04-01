@@ -10,6 +10,7 @@ spring:
       name: config
       profile: dev
       uri: http://localhost:3344
+
   rabbitmq:
     host: localhost
     port: 5672

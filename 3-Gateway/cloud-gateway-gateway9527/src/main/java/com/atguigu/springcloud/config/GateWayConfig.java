@@ -18,7 +18,7 @@ public class GateWayConfig {
     @Bean
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder){
         RouteLocatorBuilder.Builder routes = builder.routes();
-        routes.route("path_route_pengyd",r->r.path("/guonei").uri("http://news.baidu.com/guonei")).build();
+        routes.route("path_route_pengyd",r->r.path("/guonei").uri("http://news.baidu.com")).build();
         return routes.build();
     }
 
@@ -26,8 +26,8 @@ public class GateWayConfig {
     public RouteLocator customRouteLocator1(RouteLocatorBuilder builder) {
         RouteLocatorBuilder.Builder routes = builder.routes();
         routes.route("path_route_pengyd1",
-                r -> r.path("/guoji")
-                        .uri("http://news.baidu.com/guoji")).build();
+                r -> r.path("/bilibili")
+                        .uri("https://www.bilibili.com/")).build();
         return routes.build();
     }
 }

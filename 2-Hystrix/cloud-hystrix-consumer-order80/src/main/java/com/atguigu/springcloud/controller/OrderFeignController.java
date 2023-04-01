@@ -16,7 +16,6 @@ import javax.annotation.Resource;
 @RestController
 public class OrderFeignController {
 
-
     @Resource
     private PaymentFeignServiceImp paymentFeignService;
 

@@ -4,35 +4,37 @@ server:
 #配置中心
 spring:
   application:
+    #注册进Eureka服务器的微服务名
     name: cloud-config-center
   cloud:
     config:
       server:
         git:
           uri: https://github.com/PengYD/cloudConfig.git
+          ####搜索目录
           search-paths:
             - cloudConfig
+      ####读取分支
       label: master
-  rabbitmq:
-    host: localhost
-    port: 5672
-    username: guest
-    password: guest
 
-#服务注册
+#rabbitmq相关配置
+rabbitmq:
+  host: localhost
+  port: 5672
+  username: guest
+  password: guest
+
+#服务注册到eureka地址
 eureka:
   client:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: http://eureka7001.com:7001/eureka
-  instance:
-    instance-id: cloud-config-center
-    prefer-ip-address: true
+      defaultZone: http://localhost:7001/eureka
 
-#rabbitmq相关配置，暴露bus刷新配置的端点
+##rabbitmq相关配置,暴露bus刷新配置的端点
 management:
-  endpoints:
+  endpoints: #暴露bus刷新配置的端点
     web:
       exposure:
         include: 'bus-refresh'

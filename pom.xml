@@ -12,9 +12,10 @@
 
         <module>cloud-api-commons</module>
         <module>1-Eureka</module>
-        <module>4-Nacos</module>
         <module>2-Hystrix</module>
         <module>3-Gateway</module>
+        <module>4-Config</module>
+        <module>4-Nacos</module>
         <module>MQ</module>
         <module>Seata</module>
         <module>Sentinel</module>
@@ -22,6 +23,7 @@
         <module>Netty</module>
         <module>dubbo-zk</module>
         <module>z-test</module>
+
     </modules>
 
     <packaging>pom</packaging>
