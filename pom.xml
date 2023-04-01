@@ -23,7 +23,6 @@
         <module>xxl-job-test1</module>
         <module>Netty</module>
         <module>dubbo-zk</module>
-        <module>z-test</module>
     </modules>
 
     <packaging>pom</packaging>
