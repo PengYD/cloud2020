@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
 
-        <module>cloud-api-commons</module>
+        <module>0-cloud-api-commons</module>
         <module>1-Eureka</module>
         <module>2-Hystrix</module>
         <module>3-Gateway</module>
