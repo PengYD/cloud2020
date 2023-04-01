@@ -1,0 +1,5 @@
+注册中心 1-Eureka.cloud-eureka-service7001,1-Eureka.cloud-eureka-service7002
+消费者 1-Eureka.cloud-consumer-order80
+服务提供者 1-Eureka.cloud-provider-payment8001
+
+zipkin-server-2.12.8-exec.jar
