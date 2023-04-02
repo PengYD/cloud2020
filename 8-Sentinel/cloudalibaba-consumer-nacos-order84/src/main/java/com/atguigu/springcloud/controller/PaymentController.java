@@ -1,5 +1,7 @@
 package com.atguigu.springcloud.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
+import com.alibaba.csp.sentinel.slots.block.BlockException;
 import com.atguigu.springcloud.entities.CommonResult;
 import com.atguigu.springcloud.entities.Payment;
 import com.atguigu.springcloud.service.PaymentService;
@@ -25,9 +27,6 @@ public class PaymentController {
     @Resource
     private PaymentService paymentService;
 
-    @Value("${server.port}")
-    private String serverPort;
-
     @Value("${service-url.nacos-user-service}")
     private String URL;
 
@@ -43,14 +42,56 @@ public class PaymentController {
 
 
     @GetMapping(value = "/Test/{id}")
-    public CommonResult<Payment> feignTest(@PathVariable("id") Long id){
+    @SentinelResource(value = "Test" , blockHandler = "blockHandler")
+    public CommonResult<Payment> Test(@PathVariable("id") Long id){
+        if (id == 1) {
+            throw new RuntimeException("非法参数");
+        }
         CommonResult<Payment>  forObject = restTemplate.getForObject(URL + "/paymentSQL/" + id, CommonResult.class);
         return forObject;
     }
 
-    @GetMapping(value = "/consumer/paymentSQL/{id}")
-    public CommonResult<Payment> paymentSQL(@PathVariable("id") Long id) {
-        return paymentService.paymentSQL(id);
+
+    @GetMapping(value = "/paymentSQL1/{id}")
+    //@SentinelResource(value = "paymentSQL") //没有配置
+    //@SentinelResource(value = "paymentSQL",fallback = "handlerFallback") //fallback只负责业务异常
+//    @SentinelResource(value = "paymentSQL",blockHandler = "blockHandler") //blockHandler只负责sentinel控制台配置违规
+    @SentinelResource(value = "paymentSQL",fallback = "handlerFallback",blockHandler = "blockHandler",
+            exceptionsToIgnore = {IllegalArgumentException.class})
+    public CommonResult<Payment> paymentSQL1(@PathVariable("id") Long id) {
+        if (id == 99) {
+            throw new RuntimeException("非法参数");
+        }
+        CommonResult<Payment> commonResult = new CommonResult<>();
+        commonResult.setCode(Math.toIntExact(id));
+        commonResult.setMessage(null);
+        commonResult.setData(hashMap.get(1));
+        return commonResult;
     }
 
+    public CommonResult<Payment> handlerFallback(@PathVariable("id")Long id, Throwable e){
+
+        CommonResult<Payment> commonResult = new CommonResult<>();
+        commonResult.setCode(Math.toIntExact(id));
+        commonResult.setMessage(e.getMessage());
+        commonResult.setData(null);
+        return commonResult;
+    }
+
+    //本例是blockHandler
+    public CommonResult blockHandler(BlockException blockException) {
+        Payment payment = new Payment(1l,"null");
+        return new CommonResult<>(445,"blockHandler-sentinel限流,无此流水: blockException  "+blockException.getMessage(),payment);
+    }
+
+    /**
+     *  测试使用openFeign
+     * @param id
+     * @return
+     */
+    @GetMapping(value = "/consumer/paymentSQL/{id}")
+    public CommonResult<Payment> paymentSQL(@PathVariable("id") Long id)
+    {
+        return paymentService.paymentSQL(id);
+    }
 }

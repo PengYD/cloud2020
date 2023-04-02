@@ -31,6 +31,9 @@ public class PaymentController {
 
     @GetMapping(value = "/paymentSQL/{id}")
     public CommonResult<Payment> paymentSQL(@PathVariable("id") Long id){
+        if (id == 99) {
+            throw new RuntimeException("非法参数");
+        }
         Payment payment = hashMap.get(id);
         CommonResult<Payment> result = new CommonResult(200,"from mysql,serverPort:  "+serverPort,payment);
         return result;
