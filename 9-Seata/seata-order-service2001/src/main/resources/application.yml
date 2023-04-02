@@ -29,7 +29,4 @@ logging:
       seata: info
 
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.atguigu.springclous.entities
-
-
+  mapperLocations: classpath:mapper/*.xml
