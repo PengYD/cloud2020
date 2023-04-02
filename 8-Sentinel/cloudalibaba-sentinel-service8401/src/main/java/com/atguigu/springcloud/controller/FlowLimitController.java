@@ -30,8 +30,24 @@ public class FlowLimitController {
         return "************testADefault:"+p2;
     }
 
+    /**
+     *  测试线程限制
+     * @return
+     */
     @GetMapping("/testB")
+    @SentinelResource(value = "testB",blockHandler = "testAHandler")
     public String testB(){
+        try {
+            Thread.sleep(3000);
+        } catch (Exception e1) {
+            return "************testB";
+        }
         return "************testB";
+    }
+
+    @GetMapping("/testC")
+    @SentinelResource(value = "testC",blockHandler = "testAHandler")
+    public String testC(){
+        return "************testC";
     }
 }
