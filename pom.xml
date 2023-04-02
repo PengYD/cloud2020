@@ -18,8 +18,8 @@
         <module>5-MQ-Stream</module>
         <module>6-Sleuth+Zipkin</module>
         <module>7-Nacos</module>
+        <module>8-Sentinel</module>
         <module>Seata</module>
-        <module>Sentinel</module>
         <module>xxl-job-test1</module>
         <module>Netty</module>
         <module>dubbo-zk</module>
