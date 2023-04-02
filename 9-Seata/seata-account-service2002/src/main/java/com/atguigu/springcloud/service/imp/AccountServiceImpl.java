@@ -34,6 +34,7 @@ public class AccountServiceImpl implements AccountService {
         LOGGER.info("------->account-service中扣减账户余额开始");
 //        try {
 //            TimeUnit.SECONDS.sleep(20);
+//            int i = 1 / 0;
 //        } catch (InterruptedException e)
 //        {
 //            e.printStackTrace();
