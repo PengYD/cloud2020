@@ -10,7 +10,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>Seata</artifactId>
+    <artifactId>9-Seata</artifactId>
 
     <packaging>pom</packaging>
 
