@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class RateLimitController {
 
     @GetMapping("/byResource1")
-    @SentinelResource(value = "byResource1",blockHandler = "byResourceHandler")
+    @SentinelResource(value = "byResource1", blockHandler = "byResourceHandler")
     public CommonResult byResource(@RequestParam(value = "p1",required = false)String p1,
                         @RequestParam(value = "p2",required = false)String p2){
         log.info("p1:"+p1+"-------------.p2:"+p2);
@@ -31,7 +31,7 @@ public class RateLimitController {
 
     public CommonResult byResourceHandler(String p1,String p2,BlockException e){
         log.info("p1:"+p1+"-------------.p2:"+p2);
-        return new CommonResult(500,e.getClass().getCanonicalName()+"\t 服务不可用s");
+        return new CommonResult(500, "byResourceHandler 服务不可用s");
     }
 
     @GetMapping("/customer")

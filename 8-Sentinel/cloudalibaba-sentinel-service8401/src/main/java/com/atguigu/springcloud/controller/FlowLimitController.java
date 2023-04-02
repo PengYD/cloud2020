@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class FlowLimitController {
 
     @GetMapping("/testA")
-    @SentinelResource(value = "testA",blockHandler = "testAHandler")
+    @SentinelResource(value = "testA", defaultFallback = "testAHandler")
     public String testA(@RequestParam(value = "p1",required = false)String p1,
                         @RequestParam(value = "p2",required = false)String p2){
 
@@ -35,7 +35,7 @@ public class FlowLimitController {
      * @return
      */
     @GetMapping("/testB")
-    @SentinelResource(value = "testB",blockHandler = "testAHandler")
+    @SentinelResource(value = "testB", defaultFallback = "testAHandler")
     public String testB(){
         try {
             Thread.sleep(3000);
@@ -46,7 +46,7 @@ public class FlowLimitController {
     }
 
     @GetMapping("/testC")
-    @SentinelResource(value = "testC",blockHandler = "testAHandler")
+    @SentinelResource(value = "testC", defaultFallback = "testAHandler")
     public String testC(){
         return "************testC";
     }
@@ -56,7 +56,7 @@ public class FlowLimitController {
      * @return
      */
     @GetMapping("/testD")
-    @SentinelResource(value = "testD",blockHandler = "testAHandler")
+    @SentinelResource(value = "testD", defaultFallback = "testAHandler")
     public String testD(){
         try {
             Thread.sleep(1000);
@@ -72,7 +72,7 @@ public class FlowLimitController {
      * @return
      */
     @GetMapping("/testE")
-    @SentinelResource(value = "testE",blockHandler = "testAHandler")
+    @SentinelResource(value = "testE", defaultFallback = "testAHandler")
     public String testE(){
         double random = Math.random();
         if (random > 0.5) {
