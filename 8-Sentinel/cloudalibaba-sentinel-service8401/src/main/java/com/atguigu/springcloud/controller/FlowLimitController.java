@@ -50,4 +50,34 @@ public class FlowLimitController {
     public String testC(){
         return "************testC";
     }
+
+    /**
+     *  慢调用降级测试
+     * @return
+     */
+    @GetMapping("/testD")
+    @SentinelResource(value = "testD",blockHandler = "testAHandler")
+    public String testD(){
+        try {
+            Thread.sleep(1000);
+        } catch (Exception e1) {
+            return "************************testD";
+        }
+        return "************testD";
+    }    /**
+
+
+    /**
+     *  异常比例测试
+     * @return
+     */
+    @GetMapping("/testE")
+    @SentinelResource(value = "testE",blockHandler = "testAHandler")
+    public String testE(){
+        double random = Math.random();
+        if (random > 0.5) {
+            throw new RuntimeException();
+        }
+        return "************testE";
+    }
 }
