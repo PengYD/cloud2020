@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>user-code.service-provider</artifactId>
+    <artifactId>user-service-provider</artifactId>
     <dependencies>
 
         <dependency>
