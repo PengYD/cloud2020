@@ -37,7 +37,7 @@ public class MyServer {
                             ChannelPipeline pipeline = ch.pipeline();
                             /**
                              * 1、基于Http协议  视同Http编、解码器
-                             * 2、十一块方式写，添加ChunkedWriteHandler处理器
+                             * 2、是以块方式写，添加ChunkedWriteHandler处理器
                              * 3、http数据在传输中是分段的，HttpObjectAggregator 将多个段聚合。
                              * 4、WebSocketServerProtocolHandler webSocket 数据以帧（frame）传输。
                              *      核心功能将http协议升级为ws协议，保持长连接
